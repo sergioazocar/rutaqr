@@ -1,0 +1,47 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  slug: MyString
+  foto_perfil: MyString
+  foto_portada: MyString
+  nombre: MyString
+  descripcion_corta: MyText
+  descripcion_larga: MyText
+  telefono: MyString
+  celular: MyString
+  correo: MyString
+  pais: MyString
+  ciudad: MyString
+  direccion: MyString
+  sitio_web: MyString
+  facebook: MyString
+  twitter: MyString
+  youtube: MyString
+  latitud: MyString
+  longitud: MyString
+  codigo_qr: MyString
+  categoria_id: 
+  usuario_id: 
+
+two:
+  slug: MyString
+  foto_perfil: MyString
+  foto_portada: MyString
+  nombre: MyString
+  descripcion_corta: MyText
+  descripcion_larga: MyText
+  telefono: MyString
+  celular: MyString
+  correo: MyString
+  pais: MyString
+  ciudad: MyString
+  direccion: MyString
+  sitio_web: MyString
+  facebook: MyString
+  twitter: MyString
+  youtube: MyString
+  latitud: MyString
+  longitud: MyString
+  codigo_qr: MyString
+  categoria_id: 
+  usuario_id: 

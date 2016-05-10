@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title><%= @directorio.nombre %> - Ruta QR</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="author" content="@RutaQR">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+  <meta name="description" content="Mira el perfil de este lugar en nuestro sitio!">
+  <meta name="application-name" content="Ruta QR">
+  <meta name="twitter:title" content="Ruta QR - <%= @directorio.nombre %>">
+  <meta name="twitter:description" content="Mira el perfil de este lugar en nuestro sitio!">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@RutaQR">
+  <meta name="twitter:creator" content="@RutaQR">
+  <meta name="twitter:image" content="<%= @directorio.foto_portada %>">
+  <meta property="og:title" content="Ruta QR - <%= @directorio.nombre %>">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="http://www.rutaqr.cl/directorio/<%= @directorio.slug %>">
+  <meta property="og:description" content="Mira el perfil de este lugar en nuestro sitio!">
+  <meta property="og:image" content="<%= @directorio.foto_portada %>">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-71822160-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+</head>
+<body>
+  <%= render 'layouts/menu' %>
+
+<% if usuario_signed_in? %>
+  <%= link_to 'Editar', edit_directorio_path(@directorio), :class => 'btn btn-ruta btn-lg' %>
+<% end %>
+<div style="<%= 'display:none;' if notice.nil? and alert.nil? %>">
+  <%= notice %><%= alert %>
+</div>
+
+<section class="directorio-portada" style="background: url(<%= @directorio.foto_portada %>)"></section>
+<div class="flecha-top"></div>
+<div class="flecha-top-borde"></div>
+<div class="directorio container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
+      <header class="directorio-header">
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+            <img class="img-responsive directorio-logo" src="<%= @directorio.foto_perfil %>">
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
+          </div>
+        </div>
+        <div class="row m-y-md">
+          <div class="col-xs-12 col-sm-6 col-md-7 col-lg-7">
+            <h1 class="directorio-titulo"><%= @directorio.nombre %></h1>
+            <p class="lead"><%= @directorio.descripcion_corta.html_safe %></p>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-5 col-lg-5">
+            <ul class="directorio-datos list-unstyled">
+              <% if @directorio.telefono? %>
+                <li class="lead"><i class="fa fa-phone"></i><%= @directorio.telefono %></li>
+              <% end %>
+              <% if @directorio.celular? %>
+                <li class="lead"><i class="fa fa-mobile"></i><%= @directorio.celular %></li>
+              <% end %>
+              <% if @directorio.direccion? %>
+                <li class="lead"><i class="fa fa-map-marker"></i><%= @directorio.direccion %>, <%= @directorio.ciudad %>. <%= @directorio.pais %></li>
+              <% end %>
+              <% if @directorio.correo? %>
+                <li class="lead"><i class="fa fa-envelope-o"></i><a href="mailto:<%= @directorio.correo %>"><%= @directorio.correo %></a></li>
+              <% end %>
+              <% if @directorio.sitio_web? %>
+                <li class="lead"><i class="fa fa-link"></i><a href="http://<%= @directorio.sitio_web %>" target="_blank"><%= @directorio.sitio_web %></a></li>
+              <% end %>
+            </ul>
+            <% if @directorio.facebook? or @directorio.twitter? or @directorio.youtube? %>
+              <ul class="list-inline directorio-redes_sociales">
+                <% if @directorio.facebook? %>
+                  <li><a href="<%= @directorio.facebook %>" target="_blank"><span class="fa fa-facebook fa-2x"></span></a></li>
+                <% end %>
+                <% if @directorio.twitter? %>
+                  <li><a href="<%= @directorio.twitter %>" target="_blank"><span class="fa fa-twitter fa-2x"></span></a></li>
+                <% end %>
+                <% if @directorio.youtube? %>
+                  <li><a href="<%= @directorio.youtube %>" target="_blank"><span class="fa fa-youtube-play fa-2x"></span></a></li>
+                <% end %>
+              </ul>
+            <% end %>
+          </div>
+        </div>
+      </header>
+
+      <div role="tabpanel">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active directorio-tabs">
+              <a href="#descripcion" aria-controls="descripcion" role="tab" data-toggle="tab">Descripción</a>
+          </li>
+          <li role="presentation" class="directorio-tabs">
+              <a href="#mapa" aria-controls="mapa" role="tab" data-toggle="tab">Mapa</a>
+          </li>
+          <li role="presentation" class="directorio-tabs">
+              <a href="#contacto" aria-controls="contacto" role="tab" data-toggle="tab">Contacto</a>
+          </li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="descripcion">
+            <p class="lead"><%= @directorio.descripcion_larga.html_safe %></p>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="mapa">
+            <h3>MAPA</h3>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="contacto">
+            <h3>CONTACTO</h3>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+      <%= render 'layouts/sidebar' %>
+    </div>
+  </div>
+  <%= render 'layouts/partner' %>
+</div>

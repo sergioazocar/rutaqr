@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>Ruta QR - <%= @noticia.titulo %></title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="author" content="@RutaQR">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+  <meta name="description" content="Lee la noticia completa ingresando en nuestro sitio!">
+  <meta name="application-name" content="Ruta QR - <%= @noticia.titulo %>">
+  <meta name="twitter:title" content="Ruta QR - <%= @noticia.titulo %>">
+  <meta name="twitter:description" content="Lee la noticia completa ingresando en nuestro sitio!">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@RutaQR">
+  <meta name="twitter:creator" content="@RutaQR">
+  <meta name="twitter:image" content="<%= @noticia.foto_portada %>">
+  <meta property="og:title" content="Ruta QR - <%= @noticia.titulo %>">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="http://www.rutaqr.cl/noticias/<%= @noticia.slug %>">
+  <meta property="og:description" content="Lee la noticia completa ingresando en nuestro sitio!">
+  <meta property="og:image" content="<%= @noticia.foto_portada %>">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-71822160-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+</head>
+<body>
+  <%= render 'layouts/menu' %>
+
+<% if usuario_signed_in? %>
+<%= link_to 'Editar', edit_noticia_path(@noticia) %> |
+<% end %>
+<div style="<%= 'display:none;' if notice.nil? and alert.nil? %>">
+  <%= notice %><%= alert %>
+</div>
+<div class="container">
+  <div class="row">
+    <section class="noticia">
+      <div class="noticia-header">
+        <%= image_tag(@noticia.foto_portada, class: "img-responsive noticia-header-img") %>
+      </div>
+      <div class="noticia-body container-fluid">
+        <div class="row">
+          <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+            <h1 class="display-2"><%= @noticia.titulo %></h1>
+            <p><%= @noticia.created_at.strftime "%d - %m - %Y" %></p>
+            <%= @noticia.contenido.html_safe %>
+            <%= link_to 'Volver atrás', root_path, :class => 'btn btn-ruta m-b-md' %>
+          </div>
+          <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+            <%= render 'layouts/sidebar' %>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

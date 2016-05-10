@@ -1,0 +1,42 @@
+<%= form_for(@noticia) do |f| %>
+  <% if @noticia.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@noticia.errors.count, "error") %> prohibited this noticia from being saved:</h2>
+
+      <ul>
+      <% @noticia.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
+      <div class="form-group">
+        <%= f.label :titulo %><br>
+        <%= f.text_field :titulo, :class => 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :foto_portada %><br>
+        <%= f.text_field :foto_portada, :class => 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :contenido %><br>
+        <%= f.text_area :contenido, :class => 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :estado %><br>
+        <select class="form-control" name="noticia[estado]" id="noticia_estado">
+          <option value="">Seleccionar estado...</option>
+          <%= options_for_select([['Borrador'], ['Publicar']]) %>
+        </select>
+      </div>
+      <div class="actions">
+        <%= f.submit :class => 'btn btn-ruta' %>
+      </div>
+
+    </div>
+  </div>
+</div>
+<% end %>

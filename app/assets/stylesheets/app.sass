@@ -1,0 +1,278 @@
+@import "bootstrap-sprockets"
+@import "bootstrap"
+@import "font-awesome-sprockets"
+@import "font-awesome"
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700)
+
+$rojo: #e74444
+body
+	font-size: 16px
+	p
+		font-family: 'Open Sans', sans-serif
+.navbar-default
+	background-color: $rojo
+	border: none
+	border-radius: 0
+	padding: 0 10px
+.logo
+	width: 200px
+	padding: 10px
+
+.buscador
+	display: flex
+	.buscador-input
+		border: 2px solid $rojo
+		border-right: 0
+		border-radius: 5px 0 0 5px
+	.buscador-boton
+		border-radius: 0 5px 5px 0
+
+.noticia-thumb, .directorio-thumb
+	box-shadow: 0 0 5px #bbb
+	margin-bottom: 20px
+	.noticia-thumb-header, .directorio-thumb-header
+		height: 200px
+		display: flex
+		justify-content: center
+		align-items: center
+		flex-direction: column
+		background-repeat: no-repeat !important
+		background-position: bottom center !important
+		background-size: cover !important
+		padding: 10px
+		text-align: center
+		h2 a
+			color: #fff
+			text-shadow: 0 0 5px #111, 0 0 10px #222
+			&:hover
+				color: #444
+				text-shadow: 0 0 5px #eee, 0 0 10px #ddd
+
+	@media (max-width: 767px)
+		.noticia-thumb-body, .directorio-thumb-body
+			height: auto
+
+	@media (min-width: 768px)
+		.noticia-thumb-body, .directorio-thumb-body
+			height: 260px
+
+	@media (min-width: 992px)
+		.noticia-thumb-body, .directorio-thumb-body
+			height: 200px
+
+	.noticia-thumb-footer, .directorio-thumb-footer
+		border-top: 2px solid #eee
+
+	//@media (min-width: 1200px)
+	//	.noticia-thumb-body
+	//	height: 1170px
+
+.noticia
+	margin-bottom: 20px
+	.noticia-header
+		margin-bottom: 20px
+		.noticia-header-img
+			width: 100%
+	.noticia-body
+		h1
+			margin-top: -10px
+		p
+			font-size: 1.8rem
+
+
+.directorio-cta
+	height: 60vh
+	width: 100%
+	display: flex
+	justify-content: center
+	flex-direction: column
+	align-items: center
+	text-align: center
+	background-repeat: no-repeat !important
+	background-position: bottom center !important
+	background-size: cover !important
+	color: #fff
+	margin-bottom: 20px
+	padding: 20px
+	a
+		width: 130px
+.directorio-portada
+	display: relative
+	height: 38rem
+	width: 100%
+	background-repeat: no-repeat !important
+	background-position: center center !important
+	background-size: cover !important
+	border-bottom: 2px solid #222
+.directorio-titulo
+	color: black
+.horario h2, .contacto-perfil h2
+	color: #222
+
+.directorio-logo
+	border: white solid 3px
+	border-radius: 10px
+	border: 2px solid #222
+	padding: 5px
+	background-color: #fff
+
+.directorio-datos li .fa
+	margin-right: 5px
+	width: 25px
+	text-align: center
+
+.directorio-redes_sociales
+	span
+		margin: 0 10px
+	a
+		.fa-facebook
+			padding: 10px 17px
+			background-color: #3A5795
+			color: #fff
+			border-radius: 50%
+			border: 2px solid #3A5795
+			&:hover
+				color: #3A5795
+				background-color: #fff
+		.fa-twitter
+			padding: 10px 12px
+			background-color: #5EA9DD
+			color: #fff
+			border-radius: 50%
+			border: 2px solid #5EA9DD
+			&:hover
+				color: #5EA9DD
+				background-color: #fff
+		.fa-youtube-play
+			padding: 10px
+			background-color: #CC181E
+			color: #fff
+			border-radius: 50%
+			border: 2px solid #CC181E
+			&:hover
+				color: #CC181E
+				background-color: #fff
+.directorio-tabs
+	width: 33.3333%
+.directorio-tabs a
+	color: brown
+
+/*col-xs*/
+@media (max-width: 543px)
+	.directorio-portada
+		height: 18rem
+	.directorio-titulo
+		font-size: 2.6rem
+		margin-top: 0
+	.directorio-logo
+		width: 25vw
+		margin-top: -6rem
+		margin-left: auto
+		margin-right: auto
+	.directorio-titulo
+		text-align: center
+	.directorio-redes_sociales
+		text-align: center
+/*col-sm*/
+@media (min-width: 544px) and (max-width: 767px)
+	.directorio-portada
+		height: 24rem
+	.directorio-logo
+		width: 20vw
+		margin-top: -7rem
+		margin-left: auto
+		margin-right: auto
+	.directorio-titulo
+		text-align: center
+		margin-top: 10px
+	.directorio-sidebar
+		max-width: 400px
+		margin: 0 auto
+/*col-md*/
+@media (min-width: 768px) and (max-width: 991px)
+	.directorio-portada
+		height: 30rem
+	.directorio-logo
+		width: 18vw
+		margin-top: -9rem
+		margin-left: auto
+		margin-right: auto
+	.directorio-titulo
+		margin-top: 0
+	.directorio-datos
+		margin-top: .8rem
+	.directorio-sidebar
+		max-width: 400px
+		margin: 0 auto
+/*col-lg*/
+@media (min-width: 992px)
+	.directorio-portada
+		height: 35rem
+	.directorio-logo
+		margin-top: -16rem
+		width: 20vw
+		max-width: 200px
+		margin-left: auto
+		margin-right: auto
+	.directorio-titulo
+		margin-top: 10px
+	.directorio-datos
+		margin-top: 1.8rem
+	.directorio
+		.directorio-sidebar
+			margin-top: 6rem
+
+
+
+
+.sponsors-head
+	background-color: $rojo
+	color: #fff
+.sponsor-img
+	width: auto
+	height: 80px
+
+.redes-sociales
+	height: 180px
+
+.footer
+	background-color: $rojo
+	a
+		color: #fff
+
+
+.flecha-top
+	margin-top: -30px
+	width: 100vw
+	height: 0
+	border-top: 30px solid transparent
+	border-right: 50vw solid #222
+	border-left: 50vw solid #222
+
+.flecha-top-borde
+	margin-top: -28px
+	width: 100vw
+	height: 0
+	border-top: 30px solid transparent
+	border-right: 50vw solid #fff
+	border-left: 50vw solid #fff
+
+
+.partner
+	display: flex
+	justify-content: space-between
+	align-items: center
+	h2
+		margin: 0
+	a .partner-img
+		max-height: 130px
+		-webkit-filter: grayscale(100%)
+		transition: all 1.5s
+		&:hover
+			-webkit-filter: none
+
+@media (max-width: 544px)
+	.partner
+		display: flex
+		flex-direction: column
+		justify-content: center

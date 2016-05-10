@@ -1,0 +1,29 @@
+<nav class="navbar navbar-default m-b-0" role="navigation">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="fa fa-bars"></span>
+    </button>
+    <%= link_to image_tag("rutaqr-logo-menu.png", class: "img-responsive logo"), root_path %>
+  </div>
+  <div class="collapse navbar-collapse navbar-ex1-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li><%= link_to 'INICIO', root_path %></li>
+      <li><%= link_to 'NOTICIAS', noticias_path %></li>
+      <li><%= link_to 'SOBRE NOSOTROS', '/about' %></li>
+      <li>
+        <span class="navbar-redes_sociales">
+        <a href="https://www.youtube.com/c/RutaqrCl?sub_confirmation=1" target="_blank">
+            <span class="fa fa-youtube-play fa-menu"></span>
+        </a>
+        <a href="https://www.twitter.com/RutaQR" target="_blank">
+          <span class="fa fa-twitter fa-menu"></span>
+        </a>
+        <a href="https://www.facebook.com/rutaqr" target="_blank">
+          <span class="fa fa-facebook fa-menu"></span>
+        </a>
+        </span>
+      </li>
+    </ul>
+  </div>
+</nav>

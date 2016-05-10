@@ -1,0 +1,37 @@
+<%= form_for(@suscripcion) do |f| %>
+  <% if @suscripcion.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@suscripcion.errors.count, "error") %> prohibited this suscripcion from being saved:</h2>
+
+      <ul>
+      <% @suscripcion.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :fecha_inicio %><br>
+    <%= f.date_select :fecha_inicio %>
+  </div>
+  <div class="field">
+    <%= f.label :fecha_termino %><br>
+    <%= f.date_select :fecha_termino %>
+  </div>
+  <div class="field">
+    <%= f.label :precio %><br>
+    <%= f.text_field :precio %>
+  </div>
+  <div class="field">
+    <%= f.label :estado %><br>
+    <%= f.text_field :estado %>
+  </div>
+  <div class="field">
+    <%= f.label :usuario_id %><br>
+    <%= f.text_field :usuario_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

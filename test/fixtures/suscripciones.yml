@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fecha_inicio: 2016-01-08
+  fecha_termino: 2016-01-08
+  precio: MyString
+  estado: MyString
+  usuario_id: 
+
+two:
+  fecha_inicio: 2016-01-08
+  fecha_termino: 2016-01-08
+  precio: MyString
+  estado: MyString
+  usuario_id: 

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Fecha inicio:</strong>
+  <%= @suscripcion.fecha_inicio %>
+</p>
+
+<p>
+  <strong>Fecha termino:</strong>
+  <%= @suscripcion.fecha_termino %>
+</p>
+
+<p>
+  <strong>Precio:</strong>
+  <%= @suscripcion.precio %>
+</p>
+
+<p>
+  <strong>Estado:</strong>
+  <%= @suscripcion.estado %>
+</p>
+
+<p>
+  <strong>Usuario:</strong>
+  <%= @suscripcion.usuario %>
+</p>
+
+<%= link_to 'Edit', edit_suscripcion_path(@suscripcion) %> |
+<%= link_to 'Back', suscripciones_path %>

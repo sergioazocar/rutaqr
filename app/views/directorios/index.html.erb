@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>Ruta QR - Difusión Turística</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="author" content="@RutaQR">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+  <meta name="description" content="Somos un medio de difusión turística, nos enfocamos en potenciar el turismo y la cultura del sur de Chile. Visitanos y enterate de las últimas novedades que te trae esta mágica región.">
+  <meta name="application-name" content="Ruta QR">
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@rutaqr" />
+  <meta name="twitter:creator" content="@rutaqr" />
+  <meta property="og:title" content="Ruta QR">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="http://www.rutaqr.cl/">
+  <meta property="og:description" content="Somos un medio de difusión turística, nos enfocamos en potenciar el turismo y la cultura del sur de Chile. Visitanos y enterate de las últimas novedades que te trae esta mágica región.">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Ruta QR">
+  <meta name="twitter:description" content="Somos un medio de difusión turística, nos enfocamos en potenciar el turismo y la cultura del sur de Chile. Visitanos y enterate de las últimas novedades que te trae esta mágica región.">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-71822160-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+</head>
+<body>
+  <%= render 'layouts/menu' %>
+
+<section class="directorio-cta" style="background: url('/fondo.jpg');">
+  <h1>MUÉSTRALE AL TURÍSTA QUE ESTÁS EN LA RUTA</h1>
+  <a href="#" class="btn btn-cta">REGISTRARME</a>
+</section>
+
+<p id="notice"><%= notice %></p>
+<div class="container-fluid">
+<% if usuario_signed_in? %>
+  <div class="text-center m-b-md">
+    <%= link_to 'Nuevo directorio', new_directorio_path, :class => 'btn btn-ruta btn-lg' %>
+  </div>
+<% end %>
+<div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <%= form_tag directorios_path, :method => 'get' do %>
+      <div class="form-group buscador">
+        <%= text_field_tag :search, params[:search], :class => 'buscador-input form-control input-lg', :placeholder => 'Buscar Hoteles, Restaurants, etc...' %>
+        <button class="buscador-boton btn btn-buscar fa fa-search fa-x4 p-x-lg"></button>
+      </div>
+    <% end %>
+    <div class="row">
+      <% @directorios.each do |directorio| %>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+        <article class="directorio-thumb">
+          <div class="directorio-thumb-header" style="background: url(<%= directorio.foto_portada %>)">
+            <h2><%= link_to directorio.nombre, '/directorio/'+directorio.slug %></h2>
+          </div>
+          <div class="directorio-thumb-flecha"></div>
+          <div class="directorio-thumb-body p-a-md">
+            <p><small>Fecha: <%= directorio.created_at.strftime "%d - %m - %Y" %></small></p>
+            <%= directorio.descripcion_corta.truncate_words(20, omission: ' ...').html_safe %>
+            <%= link_to 'Leer más', directorio, :class => 'btn btn-leer btn-xs' %>
+          </div>
+          <% if usuario_signed_in? %>
+          <div class="directorio-thumb-footer p-a-md m-t-md text-center">
+            <%= link_to 'Editar', edit_directorio_path(directorio), :class => 'btn btn-warning' %>
+            <%= link_to 'Eliminar', directorio, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %>
+          </div>
+          <% end %>
+        </article>
+        </div>
+      <% end %>
+    </div>
+    <div class="text-center">
+      <%= will_paginate @directorios, :class => 'pagination-lg', previous_label: h("<"), next_label: h(">"), renderer: BootstrapPagination::Rails %>
+    </div>
+    <%= render 'layouts/partner' %>
+  </div>
+</div>
+</div>
